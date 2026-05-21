@@ -2,9 +2,9 @@ version: '3.8'
 
 services:
   seeker:
-    image: thewhiteh4t/seeker:latest
+    build: .
     container_name: seeker
-    command: python3 seeker.py -t 0
+    command: -t 1
     ports:
       - "8080:8080"
     networks:
@@ -17,7 +17,7 @@ services:
     container_name: ngrok
     command: http seeker:8080
     # environment:
-      # NGROK_AUTHTOKEN: "tu_token_aqui" # Descomenta y pon tu token de ngrok si es necesario
+    #   NGROK_AUTHTOKEN: "tu_token_de_ngrok_aqui"
     networks:
       - ngroknet
     ports:
