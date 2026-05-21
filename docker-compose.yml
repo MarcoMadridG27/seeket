@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  seeker:
+    image: thewhiteh4t/seeker:latest
+    container_name: seeker
+    command: python3 seeker.py -t 0
+    ports:
+      - "8080:8080"
+    networks:
+      - ngroknet
+    tty: true
+    stdin_open: true
+
+  ngrok:
+    image: ngrok/ngrok:latest
+    container_name: ngrok
+    command: http seeker:8080
+    # environment:
+      # NGROK_AUTHTOKEN: "tu_token_aqui" # Descomenta y pon tu token de ngrok si es necesario
+    networks:
+      - ngroknet
+    ports:
+      - "4040:4040"
+    depends_on:
+      - seeker
+
+networks:
+  ngroknet:
+    driver: bridge
