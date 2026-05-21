@@ -1,157 +1,412 @@
-@font-face {
-	font-family: Product Sans;
-	font-style: normal;
-  	font-weight: 400;
-	src: url('/fonts/pxiDypQkot1TnFhsFMOfGShVF9eO.woff2') format('woff2');
+/* Google Drive Modern Style */
+
+:root {
+    --google-blue: #1a73e8;
+    --google-blue-hover: #1557b0;
+    --text-primary: #202124;
+    --text-secondary: #5f6368;
+    --border-color: #dadce0;
+    --background-gray: #f8f9fa;
+    --font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    --error-red: #d93025;
+    --error-bg: #fce8e6;
 }
 
-body { 
-	background-color: #ffffff;
-	font-size: 13px;
-	margin: 0;
-	padding: 0;
-	font-family: Arial,sans-serif;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-#outerContainer {
-    margin: auto;
-    max-width: 750px;
+body {
+    background-color: #ffffff;
+    color: var(--text-primary);
+    font-family: var(--font-family);
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-#innerContainer {
-    margin-bottom: 20px;
-    margin-left: 40px;
-    margin-right: 40px;
-    margin-top: 180px;
+/* Header */
+.header {
+    height: 64px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e8eaed;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+}
+
+.drive-logo {
+    display: block;
+}
+
+.drive-logo-text {
+    font-size: 22px;
+    font-weight: 400;
+    color: #5f6368;
+    font-family: 'Product Sans', 'Roboto', sans-serif;
+    letter-spacing: -0.2px;
     position: relative;
+    top: -1px;
 }
 
-#drive-logo {
-    margin: 18px 0;
-    position: absolute;
-    white-space: nowrap;
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
 
-.docs-drivelogo-img {
-    background-image: url('/images/googlelogo_color_116x41dp.png');
-    background-size: 116px 41px;
-    display: inline-block;
-    height: 41px;
-    vertical-align: bottom;
-    width: 116px;
+.apps-btn {
+    background: none;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s;
 }
 
-.docs-drivelogo-text {
-    color: #000;
-	display: inline-block;
-	opacity: 0.54;
-	text-decoration: none;
-	font-family: 'Product Sans',Arial,Helvetica,sans-serif;
-	font-size: 32px;
-	text-rendering: optimizeLegibility;
-	position: relative;
-	top: -6px;
-	left: -7px;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+.apps-btn:hover {
+    background-color: var(--background-gray);
 }
 
-#main {
-    position: relative;
-    width: 640px;
-    top: 30px;
+.profile-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #15c8a0;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
 }
 
-#accessDeniedIcon {
-    background-image: url('/images/locked_doc-2.svg');
-    float: right;
-    height: 158px;
-    width: 128px;
+/* Main Layout */
+.main-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px 80px 24px;
 }
 
-#accessDeniedHeader {
-    color: #222;
-    font: 32px Arial, sans-serif;
-}
-
-#message {
-    color: #222;
-    font: 15px/1.6 Arial, sans-serif;
-    width: 480px;
-}
-
-button.jfk-button {
-    font-family: arial,sans-serif;
-    height: auto;
-}
-
-.jfk-button-action {
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-    background-color: #4d90fe;
-	background-image: -webkit-linear-gradient(top,#4d90fe,#4787ed);
-	background-image: -moz-linear-gradient(top,#4d90fe,#4787ed);
-	background-image: -ms-linear-gradient(top,#4d90fe,#4787ed);
-	background-image: -o-linear-gradient(top,#4d90fe,#4787ed);
-	background-image: linear-gradient(top,#4d90fe,#4787ed);
-	border: 1px solid #3079ed;
-	color: #fff;
-}
-
-.jfk-button {
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
-    cursor: default;
-    font-size: 11px;
-    font-weight: bold;
+.content-box {
+    width: 100%;
+    max-width: 620px;
     text-align: center;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Icons */
+.icon-container {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
+}
+
+.lock-circle {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background-color: #fce8e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lock-icon {
+    width: 36px;
+    height: 36px;
+}
+
+/* Headings & Text */
+.title {
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 36px;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--text-secondary);
+    margin-bottom: 28px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.email-badge {
+    background-color: #e8f0fe;
+    color: var(--google-blue);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 13px;
     white-space: nowrap;
-    margin-right: 16px;
-    height: 27px;
-    line-height: 27px;
-    min-width: 54px;
-    outline: 0px;
-    padding: 0 8px;
+    display: inline-block;
 }
 
-.jfk-button-standard {
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
+.learn-more-link {
+    color: var(--google-blue);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.learn-more-link:hover {
+    text-decoration: underline;
+}
+
+/* Input / Message Area */
+.message-field-container {
+    margin-bottom: 24px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.message-field {
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 16px;
+    font-family: var(--font-family);
+    font-size: 14px;
+    color: var(--text-primary);
+    outline: none;
+    resize: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.message-field::placeholder {
+    color: #9aa0a6;
+}
+
+.message-field:focus {
+    border-color: var(--google-blue);
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.15);
+}
+
+/* Error Banner */
+.error-banner {
+    max-width: 480px;
+    margin: 0 auto 24px auto;
+    background-color: var(--error-bg);
+    border: 1px solid #f5c2c2;
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+}
+
+.error-icon {
+    flex-shrink: 0;
+}
+
+.error-text {
+    color: #c5221f;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 18px;
+}
+
+/* Buttons */
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    align-items: center;
+}
+
+.btn {
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    height: 36px;
+    padding: 0 24px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
+    user-select: none;
+}
+
+.btn-primary {
+    background-color: var(--google-blue);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: var(--google-blue-hover);
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+}
+
+.btn-primary:active {
+    background-color: #0b57d0;
+}
+
+.btn-primary:disabled {
+    background-color: #e8eaed;
+    color: #9aa0a6;
+    cursor: default;
     box-shadow: none;
-    background-color: #f5f5f5;
-	background-image: -webkit-linear-gradient(top,#f5f5f5,#f1f1f1);
-	background-image: -moz-linear-gradient(top,#f5f5f5,#f1f1f1);
-	background-image: -ms-linear-gradient(top,#f5f5f5,#f1f1f1);
-	background-image: -o-linear-gradient(top,#f5f5f5,#f1f1f1);
-	background-image: linear-gradient(top,#f5f5f5,#f1f1f1);
-	color: #444;
-	border: 1px solid #dcdcdc;
-	border: 1px solid rgba(0,0,0,0.1);
 }
 
-@media (max-width: 500px) {
-	#accessDeniedHeader {
-		color: #222;
-		font: 25px Arial, sans-serif;
-	}
-	#accessDeniedIcon {
-		background-image: url('/images/locked_doc-1.svg');
-		height: 108px;
-		width: 88px;
-	}
-	#main {
-		width: 100%;
-	}
-	#message {
-		width: 75%;
-	}
-	#outerContainer #innerContainer {
-		margin-left: 20px;
-		margin-right: 20px;
-	}
+.btn-secondary {
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    color: var(--google-blue);
 }
 
-:focus {outline:none;}
-::-moz-focus-inner {border:0;}
+.btn-secondary:hover {
+    background-color: #f8fafd;
+    border-color: #d2e3fc;
+}
+
+.btn-secondary:active {
+    background-color: #ecf3fe;
+}
+
+/* Spinner Styles */
+.spinner-container {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.spinner {
+    animation: rotate 2s linear infinite;
+    width: 20px;
+    height: 20px;
+}
+
+.spinner .path {
+    stroke: var(--google-blue);
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+        stroke: #4285f4;
+    }
+    50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+        stroke: #34a853;
+    }
+    100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+        stroke: #4285f4;
+    }
+}
+
+/* Footer */
+.footer {
+    padding: 24px;
+    border-top: 1px solid #e8eaed;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.footer-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+.footer-dot {
+    user-select: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .header {
+        padding: 0 16px;
+    }
+    
+    .drive-logo-text {
+        font-size: 18px;
+    }
+
+    .main-container {
+        padding: 32px 16px 64px 16px;
+    }
+
+    .title {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+
+    .actions {
+        flex-direction: column-reverse;
+        width: 100%;
+        gap: 12px;
+    }
+
+    .btn {
+        width: 100%;
+        height: 40px;
+    }
+    
+    .message-field-container {
+        width: 100%;
+    }
+}

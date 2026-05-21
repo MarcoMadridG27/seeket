@@ -245,7 +245,7 @@ def server():
     port_free = False
     utils.print(f'{G}[+] {C}Port : {W}{port}\n')
     utils.print(f'{G}[+] {C}Starting PHP Server...{W}', end='')
-    cmd = ['php', '-S', f'0.0.0.0:{port}', '-t', f'template/{SITE}/']
+    cmd = ['./php-bin/php.exe', '-S', f'0.0.0.0:{port}', '-t', f'template/{SITE}/']
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
         try:
@@ -265,9 +265,9 @@ def server():
                 utils.print(f'{G}[+] {C}Starting PHP Server...{W}', end='')
                 try:
                     sleep(1)
-                    if old_proc.status() != 'running':
+                    try:
                         old_proc.kill()
-                    else:
+                    except psutil.AccessDenied:
                         utils.print(f'{C}[ {R}✘{C} ]{W}')
                         utils.print(
                             f'{R}[-] {C}Unable to kill php server process, kill manually{W}'

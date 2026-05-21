@@ -1,0 +1,37 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to EC2 via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: '18.225.238.184'
+          username: 'ec2-user'
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            echo "Starting deployment on EC2..."
+            
+            # Ensure the directory exists or clone the repository
+            if [ ! -d "/home/ec2-user/seeket" ]; then
+              echo "Cloning repository..."
+              git clone https://github.com/MarcoMadridG27/seeket.git /home/ec2-user/seeket
+            fi
+            
+            cd /home/ec2-user/seeket
+            
+            echo "Fetching latest changes..."
+            git fetch origin master
+            git reset --hard origin/master
+            
+            echo "Rebuilding and restarting docker-compose containers..."
+            docker-compose down
+            docker-compose up -d --build
+            
+            echo "Deployment finished successfully!"
