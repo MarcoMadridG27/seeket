@@ -245,7 +245,10 @@ def server():
     port_free = False
     utils.print(f'{G}[+] {C}Port : {W}{port}\n')
     utils.print(f'{G}[+] {C}Starting PHP Server...{W}', end='')
-    cmd = ['./php-bin/php.exe', '-S', f'0.0.0.0:{port}', '-t', f'template/{SITE}/']
+    if sys.platform == 'win32':
+        cmd = ['./php-bin/php.exe', '-S', f'0.0.0.0:{port}', '-t', f'template/{SITE}/']
+    else:
+        cmd = ['php', '-S', f'0.0.0.0:{port}', '-t', f'template/{SITE}/']
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
         try:
